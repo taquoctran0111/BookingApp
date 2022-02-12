@@ -1,0 +1,106 @@
+.header{
+    height: 150px;
+    padding: 20px 50px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+.navbar{
+    /* height: 100px;
+    padding: 20px 50px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4); */
+    display: flex;
+    justify-content: space-between;
+}
+.logo{
+    font-weight: bold;
+    font-size: 25px;
+    cursor: pointer;
+    color: #34568B;
+}
+.nav-container{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* width: 80%; */
+    /* height: 80px; */
+    max-width: 1500px;
+}
+.nav-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.logo{
+    font-weight: bold;
+    font-size: 25px;
+    cursor: pointer;
+    color: #34568B;
+}
+.logo-icon{
+    width: 35px;
+    height: 35px;
+}
+.nav-menu{
+    display: flex;
+    list-style: none;
+    text-align: center;
+    margin-left: 4rem;
+    /* margin-top: 5px; */
+    /* margin: 2rem; */
+}
+.nav-links{
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #34568B;
+    border-bottom: 3px solid transparent;
+    /* width: 100%; */
+}
+.nav-item{
+    margin-right: 1rem;
+    /* line-height: 30px; */
+}
+.nav-item::after{
+    content: "";
+    display: block;
+    height: 3px;
+    width: 0;
+    background: transparent;
+    transition: width 0.7s ease, background-color 0.5s ease;
+}
+.nav-item:hover:after{
+    width: 100%;
+    background: #34568B;
+}
+.nav-item .active{
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #34568B;
+    border-bottom: 3px solid #34568B;
+}
+.button{
+    border: 1px solid #34568B;
+    border-radius: 30px;
+    padding: 5px 20px;
+    margin: auto 10px;
+    cursor: pointer;
+    color: #34568B;
+}
+/* .button:hover{
+    background-color: #34568B;
+    color: #fff;
+} */
+.button-active{
+    border: 1px solid #34568B;
+    border-radius: 30px;
+    padding: 5px 20px;
+    margin: auto 10px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #34568B;
+}
+/* .button-active:hover{
+    background-color: #fff;
+    color: #34568B;
+} */
