@@ -4,6 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import SaleLogo from "../../../assets/image/sale-icon.png";
 import SaleImage from "../../../assets/image/sale-image.jpg";
 import LocaImage from "../../../assets/image/dalat.jpg";
+import DiscoveryImg from "../../../assets/image/discovery.png";
+import { Carousel } from '@trendyol-js/react-carousel';
 
 function Home() {
     return(
@@ -66,8 +68,28 @@ function Home() {
                     </Grid>
                 </Grid>
             </div>
-            <div >
-
+            <div className="discovery-container">
+                <div className="title-container">
+                    <img src = {DiscoveryImg} alt="" className="sale-logo" />
+                    <label className="title">Khám phá Việt Nam</label>   
+                </div>
+                <Carousel show={3.5} slide={2} transition={0.5} className="carousel" swiping={true}>
+                    <div className="slider">
+                        <img src={LocaImage} alt="" className="slider-img"/>
+                    </div>
+                    <div className="slider">
+                        <img src={LocaImage} alt="" className="slider-img"/>
+                    </div>
+                    <div className="slider">
+                        <img src={LocaImage} alt="" className="slider-img"/>
+                    </div>
+                    <div className="slider">
+                        <img src={LocaImage} alt="" className="slider-img"/>
+                    </div>
+                    <div className="slider">
+                        <img src={LocaImage} alt="" className="slider-img"/>
+                    </div>
+                </Carousel>
             </div>
         </div>
     );
