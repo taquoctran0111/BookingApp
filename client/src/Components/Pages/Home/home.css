@@ -66,6 +66,7 @@
 }
 .grid-container{
     position: relative;
+    width: 100%;
 }
 .location-desc{
     position: absolute;
@@ -92,8 +93,10 @@
 }
 .carousel{
     margin-top: 20px;
+    height: 250px;
 }
 .discovery-desc{
     z-index: 999;
     color: #34568B;
+    
 }

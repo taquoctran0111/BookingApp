@@ -7,11 +7,12 @@ import LocaImage from "../../../assets/image/dalat.jpg";
 import DiscoveryImg from "../../../assets/image/discovery.png";
 import { Carousel } from '@trendyol-js/react-carousel';
 import Footer from "../../Footer/footer";
+import {NavLink} from "react-router-dom";
 
 function Home() {
     return(
         <div>
-            <div className="container-home">
+            <div className="container-home" style={{marginBottom: 150}}>
                 <div className="title-container">
                     <img src = {SaleLogo} alt="" className="sale-logo"/>
                     <label className="title">Tìm kiếm các ưu đãi</label>   
@@ -27,46 +28,58 @@ function Home() {
                 <div className="location-grid">
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6} className = "grid-container">
-                            <img src = {LocaImage} alt ="" className="location-image"/>
-                            <div className="location-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,100 chỗ ở</div>
-                            </div>
+                            <NavLink exact to = "/listhotel">
+                                <img src = {LocaImage} alt ="" className="location-image"/>
+                                <div className="location-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,100 chỗ ở</div>
+                                </div>
+                            </NavLink>
                         </Grid>
                         <Grid item xs={12} sm={6} className = "grid-container">
-                        <img src = {LocaImage} alt ="" className="location-image"/>
-                            <div className="location-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,100 chỗ ở</div>
-                            </div>
+                            <NavLink exact to = "/listhotel">
+                                <img src = {LocaImage} alt ="" className="location-image"/>
+                                <div className="location-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,100 chỗ ở</div>
+                                </div>
+                            </NavLink>
                         </Grid>
                         <Grid item xs={6} sm={3} className = "grid-container">
-                            <img src = {LocaImage} alt ="" className="location-image"/>
-                            <div className="location-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,100 chỗ ở</div>
-                            </div>
+                            <NavLink exact to = "/listhotel">
+                                <img src = {LocaImage} alt ="" className="location-image"/>
+                                <div className="location-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,100 chỗ ở</div>
+                                </div>
+                            </NavLink>
                         </Grid>
                         <Grid item xs={6} sm={3} className = "grid-container">
-                            <img src = {LocaImage} alt ="" className="location-image"/>
-                            <div className="location-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,100 chỗ ở</div>
-                            </div>
+                            <NavLink exact to = "/listhotel">
+                                <img src = {LocaImage} alt ="" className="location-image"/>
+                                <div className="location-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,100 chỗ ở</div>
+                                </div>
+                            </NavLink>
                         </Grid>
                         <Grid item xs={6} sm={3} className = "grid-container">
-                            <img src = {LocaImage} alt ="" className="location-image"/>
-                            <div className="location-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,100 chỗ ở</div>
-                            </div>
+                            <NavLink exact to = "/listhotel">
+                                <img src = {LocaImage} alt ="" className="location-image"/>
+                                <div className="location-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,100 chỗ ở</div>
+                                </div>
+                            </NavLink>
                         </Grid>
                         <Grid item xs={6} sm={3} className = "grid-container">
-                            <img src = {LocaImage} alt ="" className="location-image"/>
-                            <div className="location-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,100 chỗ ở</div>
-                            </div>
+                            <NavLink exact to = "/listhotel">
+                                <img src = {LocaImage} alt ="" className="location-image"/>
+                                <div className="location-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,100 chỗ ở</div>
+                                </div>
+                            </NavLink>
                         </Grid>
                     </Grid>
                 </div>
@@ -75,126 +88,158 @@ function Home() {
                         <img src = {DiscoveryImg} alt="" className="sale-logo" />
                         <label className="title">Khám phá Việt Nam</label>   
                     </div>
-                    <Carousel show={6.5} slide={2} transition={0.5} className="carousel" swiping={true}>
+                    <Carousel show={6.5} slide={3} transition={0.5} className="carousel" swiping={true}>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                     </Carousel>
                 </div>
-                <div className="discovery-container">
+                <div className="discovery-container" style={{marginTop: 100}}>
                     <div className="title-container">
                         <img src = {DiscoveryImg} alt="" className="sale-logo" />
                         <label className="title">Các địa điểm được yêu thích</label>   
                     </div>
-                    <Carousel show={6.5} slide={2} transition={0.5} className="carousel" swiping={true}>
+                    <Carousel show={6.5} slide={3} transition={0.5} className="carousel" swiping={true}>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                         <div className="slider">
-                            <img src={LocaImage} alt="" className="slider-img"/>
-                            <div className="discovery-desc">
-                                <div>Đà Lạt</div>
-                                <div>2,300 chỗ nghỉ</div>
-                            </div>
+                            <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
+                                <img src={LocaImage} alt="" className="slider-img"/>
+                                <div className="discovery-desc">
+                                    <div>Đà Lạt</div>
+                                    <div>2,300 chỗ nghỉ</div>
+                                </div>
+                            </NavLink>
                         </div>
                     </Carousel>
                 </div>
