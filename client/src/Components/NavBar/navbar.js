@@ -27,8 +27,13 @@ function NavBar() {
                         </ul>
                     </div>
                     <div style={{display: "flex"}}>
-                        <div className="button-active">Đăng nhập</div>
-                        <div className="button">Đăng ký</div>
+                        <NavLink className="button-active" exact to = "/signin">
+                            Đăng nhập
+                        </NavLink>
+                        {/* <div className="button-active">Đăng nhập</div> */}
+                        <NavLink className="button" exact to = "/signup">
+                            Đăng ký
+                        </NavLink>
                     </div>
                 </nav>
                 <Search />

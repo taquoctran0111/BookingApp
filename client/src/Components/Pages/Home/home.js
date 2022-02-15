@@ -11,7 +11,7 @@ import Footer from "../../Footer/footer";
 function Home() {
     return(
         <div>
-            <div className="container">
+            <div className="container-home">
                 <div className="title-container">
                     <img src = {SaleLogo} alt="" className="sale-logo"/>
                     <label className="title">Tìm kiếm các ưu đãi</label>   
@@ -74,6 +74,70 @@ function Home() {
                     <div className="title-container">
                         <img src = {DiscoveryImg} alt="" className="sale-logo" />
                         <label className="title">Khám phá Việt Nam</label>   
+                    </div>
+                    <Carousel show={6.5} slide={2} transition={0.5} className="carousel" swiping={true}>
+                        <div className="slider">
+                            <img src={LocaImage} alt="" className="slider-img"/>
+                            <div className="discovery-desc">
+                                <div>Đà Lạt</div>
+                                <div>2,300 chỗ nghỉ</div>
+                            </div>
+                        </div>
+                        <div className="slider">
+                            <img src={LocaImage} alt="" className="slider-img"/>
+                            <div className="discovery-desc">
+                                <div>Đà Lạt</div>
+                                <div>2,300 chỗ nghỉ</div>
+                            </div>
+                        </div>
+                        <div className="slider">
+                            <img src={LocaImage} alt="" className="slider-img"/>
+                            <div className="discovery-desc">
+                                <div>Đà Lạt</div>
+                                <div>2,300 chỗ nghỉ</div>
+                            </div>
+                        </div>
+                        <div className="slider">
+                            <img src={LocaImage} alt="" className="slider-img"/>
+                            <div className="discovery-desc">
+                                <div>Đà Lạt</div>
+                                <div>2,300 chỗ nghỉ</div>
+                            </div>
+                        </div>
+                        <div className="slider">
+                            <img src={LocaImage} alt="" className="slider-img"/>
+                            <div className="discovery-desc">
+                                <div>Đà Lạt</div>
+                                <div>2,300 chỗ nghỉ</div>
+                            </div>
+                        </div>
+                        <div className="slider">
+                            <img src={LocaImage} alt="" className="slider-img"/>
+                            <div className="discovery-desc">
+                                <div>Đà Lạt</div>
+                                <div>2,300 chỗ nghỉ</div>
+                            </div>
+                        </div>
+                        <div className="slider">
+                            <img src={LocaImage} alt="" className="slider-img"/>
+                            <div className="discovery-desc">
+                                <div>Đà Lạt</div>
+                                <div>2,300 chỗ nghỉ</div>
+                            </div>
+                        </div>
+                        <div className="slider">
+                            <img src={LocaImage} alt="" className="slider-img"/>
+                            <div className="discovery-desc">
+                                <div>Đà Lạt</div>
+                                <div>2,300 chỗ nghỉ</div>
+                            </div>
+                        </div>
+                    </Carousel>
+                </div>
+                <div className="discovery-container">
+                    <div className="title-container">
+                        <img src = {DiscoveryImg} alt="" className="sale-logo" />
+                        <label className="title">Các địa điểm được yêu thích</label>   
                     </div>
                     <Carousel show={6.5} slide={2} transition={0.5} className="carousel" swiping={true}>
                         <div className="slider">
