@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./home.css";
 import Grid from '@material-ui/core/Grid';
 import SaleLogo from "../../../assets/image/sale-icon.png";
 import SaleImage from "../../../assets/image/sale-image.jpg";
 import LocaImage from "../../../assets/image/dalat.jpg";
+import DNImage from "../../../assets/image/danang.jpg";
+import NTImage from "../../../assets/image/nhatrang.jpg";
+import SPImage from "../../../assets/image/sapa.jpg";
+import HNImage from "../../../assets/image/hanoi.jpg";
 import DiscoveryImg from "../../../assets/image/discovery.png";
 import { Carousel } from '@trendyol-js/react-carousel';
 import Footer from "../../Footer/footer";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 function Home() {
+    const [hotels, setHotels] = useState([]);
+    useEffect(()=>{
+        axios.get('http://localhost:8797/hotels')
+        .then(res => {
+            setHotels(res.data.result.hotels);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    },[])
+    var countDaLatHotel = hotels.filter(hotel=>hotel.city_id === 11).length;
+    var countDaNangHotel = hotels.filter(hotel=>hotel.city_id === 8).length;
+    var countNhaTrangHotel = hotels.filter(hotel=>hotel.city_id === 9).length;
+    var countSapaHotel = hotels.filter(hotel=>hotel.city_id === 10).length;
+    var countHaNoiHotel = hotels.filter(hotel=>hotel.city_id === 1).length;
+    
     return(
         <div>
             <div className="container-home" style={{marginBottom: 150}}>
@@ -28,56 +49,47 @@ function Home() {
                 <div className="location-grid">
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6} className = "grid-container">
-                            <NavLink exact to = "/listhotel">
+                            <NavLink exact to = "/listhotel" state={{id: 11, name: "Đà Lạt"}}>
                                 <img src = {LocaImage} alt ="" className="location-image"/>
                                 <div className="location-desc">
-                                    <div>Đà Lạt</div>
-                                    <div>2,100 chỗ ở</div>
+                                    <div style={{fontWeight: "bold"}}>Đà Lạt</div>
+                                    <div>{countDaLatHotel} chỗ ở</div>
                                 </div>
                             </NavLink>
                         </Grid>
                         <Grid item xs={12} sm={6} className = "grid-container">
-                            <NavLink exact to = "/listhotel">
-                                <img src = {LocaImage} alt ="" className="location-image"/>
+                            <NavLink exact to = "/listhotel" state={{id: 8, name: "Đà Nẵng"}}>
+                                <img src = {DNImage} alt ="" className="location-image"/>
                                 <div className="location-desc">
-                                    <div>Đà Lạt</div>
-                                    <div>2,100 chỗ ở</div>
+                                    <div style={{fontWeight: "bold"}}>Đà Nẵng</div>
+                                    <div>{countDaNangHotel} chỗ ở</div>
                                 </div>
                             </NavLink>
                         </Grid>
-                        <Grid item xs={6} sm={3} className = "grid-container">
-                            <NavLink exact to = "/listhotel">
-                                <img src = {LocaImage} alt ="" className="location-image"/>
+                        <Grid item xs={6} sm={4} className = "grid-container">
+                            <NavLink exact to = "/listhotel" state={{id: 9, name: "Nha Trang"}}>
+                                <img src = {NTImage} alt ="" className="location-image"/>
                                 <div className="location-desc">
-                                    <div>Đà Lạt</div>
-                                    <div>2,100 chỗ ở</div>
+                                    <div style={{fontWeight: "bold"}}>Nha Trang</div>
+                                    <div>{countNhaTrangHotel} chỗ ở</div>
                                 </div>
                             </NavLink>
                         </Grid>
-                        <Grid item xs={6} sm={3} className = "grid-container">
-                            <NavLink exact to = "/listhotel">
-                                <img src = {LocaImage} alt ="" className="location-image"/>
+                        <Grid item xs={6} sm={4} className = "grid-container">
+                            <NavLink exact to = "/listhotel" state={{id: 10, name: "Sa Pa"}}>
+                                <img src = {SPImage} alt ="" className="location-image"/>
                                 <div className="location-desc">
-                                    <div>Đà Lạt</div>
-                                    <div>2,100 chỗ ở</div>
+                                    <div style={{fontWeight: "bold"}}>Sapa</div>
+                                    <div>{countSapaHotel} chỗ ở</div>
                                 </div>
                             </NavLink>
                         </Grid>
-                        <Grid item xs={6} sm={3} className = "grid-container">
-                            <NavLink exact to = "/listhotel">
-                                <img src = {LocaImage} alt ="" className="location-image"/>
+                        <Grid item xs={6} sm={4} className = "grid-container">
+                            <NavLink exact to = "/listhotel" state={{id: 1, name: "Hà Nội"}}>
+                                <img src = {HNImage} alt ="" className="location-image"/>
                                 <div className="location-desc">
-                                    <div>Đà Lạt</div>
-                                    <div>2,100 chỗ ở</div>
-                                </div>
-                            </NavLink>
-                        </Grid>
-                        <Grid item xs={6} sm={3} className = "grid-container">
-                            <NavLink exact to = "/listhotel">
-                                <img src = {LocaImage} alt ="" className="location-image"/>
-                                <div className="location-desc">
-                                    <div>Đà Lạt</div>
-                                    <div>2,100 chỗ ở</div>
+                                    <div style={{fontWeight: "bold"}}>Hà Nội</div>
+                                    <div>{countHaNoiHotel} chỗ ở</div>
                                 </div>
                             </NavLink>
                         </Grid>

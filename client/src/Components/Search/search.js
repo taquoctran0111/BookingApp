@@ -5,11 +5,11 @@ import Select from "react-select";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { NavLink } from 'react-router-dom';
 
 
 function Search() {
-    const [selectedCity, setSelectedCity] = useState(null);
+    const [selectedCity, setSelectedCity] = useState(1);
     const [checkIn, setCheckIn] = useState(null);
     const [checkOut, setCheckOut] = useState(null);
     const [man, setMan] = useState(1);
@@ -25,9 +25,11 @@ function Search() {
     };
 
     const options = [
-        { value: 'Hà Nội', label: 'Hà Nội' },
-        { value: 'Thái Bình', label: 'Thái Bình' },
-        { value: 'Hải Phòng', label: 'Hải Phòng' }
+        { value: 1, label: 'Hà Nội' },
+        { value: 11, label: 'Đà Lạt' },
+        { value: 8, label: 'Đà Nẵng' },
+        { value: 9, label: 'Nha Trang' },
+        { value: 10, label: 'Sapa' }
     ]
     return(
         <form className="search" onSubmit={handleSubmit(onSubmit)}>
@@ -55,7 +57,9 @@ function Search() {
             />
             <input className = "quantity" type="text" name="quatity-man" onChange={e => setMan(e.target.value)} placeholder="Người lớn"/>
             <input className = "quantity" type="text" name="quatity-child" onChange={e => setChild(e.target.value)} placeholder="Trẻ em"/>
-            <input type="submit" className="button-search" value="Tìm phòng"/>
+            <NavLink exact to = "/listhotel" state={{id: selectedCity.value, name: selectedCity.label}}>
+                <input type="submit" className="button-search" value="Tìm phòng"/>
+            </NavLink>
         </form>
     );
 }

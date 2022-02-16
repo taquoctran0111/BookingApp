@@ -1,6 +1,7 @@
 .listhotel-container{
     padding: 20px 150px;
 }
+/* hotel-desc */
 .hotel-container{
     display: flex;
     margin-top: 40px;
@@ -14,7 +15,7 @@
 }
 .hotel-desc{
     display: flex;
-    width: 30%;
+    width: 50%;
     justify-content: space-between;
 }
 .hotel-name{
@@ -35,6 +36,8 @@
     background-color: #3e8dac;
     color: #fff;
     cursor: pointer;
+    width: 250px;
+    text-align: center;
 }
 .rate-area{
     display: flex;
