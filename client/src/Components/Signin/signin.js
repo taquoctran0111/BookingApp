@@ -9,6 +9,7 @@ function Signin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [checkUser, setCheckuser]=useState(null);
+    const [errorLog, setErrorLog] = useState("");
 
     const navigate = useNavigate();
 
@@ -19,6 +20,10 @@ function Signin() {
     })
 
     const Login = async () => {
+        const data = JSON.stringify({ 
+            email: email, 
+            password: password 
+        })
     
         let result = await fetch("http://localhost:8797/login",{
             method: "POST",
@@ -26,21 +31,15 @@ function Signin() {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({ 
-                email: email, 
-                password: password 
-            })
+            body: data
         });
         result = await result.json();
         if(result.success === '2'){
-            localStorage.setItem("user-infor", { 
-                email: email, 
-                password: password 
-            })
+            localStorage.setItem("user-infor", data)
             navigate("/");
         }
         else{
-            console.log(result.message);
+            setErrorLog(result.message);
         }
     }
 
@@ -48,6 +47,7 @@ function Signin() {
         <div className="container-login">
             <h1>Đăng nhập</h1>
             <form>
+                <div className="error">{errorLog}</div>
                 <div className="txt_field">
                     <input type="email" name="email" value={email} onChange={e => setEmail(e.target.value)}/>
                     <span></span>

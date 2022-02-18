@@ -1,12 +1,8 @@
 let express = require("express");
 let router = new express.Router();
 
-let {register} = require("./userServices");
-let {registerValidator} = require("./userValidator");
-
-let {isLogging} = require("./userServices");
-let {signIn} = require("./userServices");
-let {loginValidator} = require("./userValidator");
+let {isLogging, signIn, register, findUser} = require("./userServices");
+let {loginValidator, registerValidator} = require("./userValidator");
 
 
 router.post("/users", async (req, res, next) => {
@@ -20,7 +16,7 @@ router.post("/users", async (req, res, next) => {
       if (registed == true) {
         return res.send({ success: "1" , message: "Register successfully."});
       } else {
-        return res.send({ success: "0", message: "Email has been used."});
+        return res.send({ success: "0", message: "Email đã được sử dụng"});
       }
     }   
   } catch (error) {
@@ -64,6 +60,20 @@ router.get("/logout", async (req, res, next) => {
     req.session.user = null;
     return res.send({message: "Sign Out successfully."});
   } catch (error) {
+    return res.status(500).send({error: "Server Error"});
+  }
+});
+
+router.get("/users/:email", async (req, res, next) => {
+  try {
+    let email = req.params;
+    let result = await findUser(email);
+    if (result === null) {
+      return res.status(404).send({message: "Not found hotel"});
+    }
+    return res.send({result});
+  } catch (error) {
+    console.log(error);
     return res.status(500).send({error: "Server Error"});
   }
 });

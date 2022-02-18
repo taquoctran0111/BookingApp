@@ -1,9 +1,9 @@
 import Grid from '@material-ui/core/Grid';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, } from "react";
 import axios from "axios";
 import LocaImage from "../../assets/image/dalat.jpg";
 import "./detailhotel.css"
-import {NavLink,useLocation} from "react-router-dom";
+import {NavLink, useLocation,  useNavigate} from "react-router-dom";
 import NoSmokeIcon from "../../assets/image/no-smoke.png";
 import CarIcon from "../../assets/image/car.png";
 import CarParkIcon from "../../assets/image/car-park.png";
@@ -13,7 +13,10 @@ import RoomServiceIcon from "../../assets/image/room-service.png";
 function DetailHotel() {
     let location = useLocation();
     let idHotel = location.state.id;
+    const navigate = useNavigate();
     const [hotel, setHotel] = useState([]);
+    const checkUser = localStorage.getItem('user-infor');
+
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
@@ -98,8 +101,8 @@ function DetailHotel() {
                 <div style={{fontWeight: "bold", marginTop: 15, marginBottom: 15}}>Phòng có:</div>
                 <div>Nhìn ra vườn</div>
                 <div>Có bãi đậu xe riêng miễn phí ở khách sạn này</div>
-                <div style={{fontSize: 18, fontWeight: "bold", marginTop: 10}}>Giá phòng: {hotel.price} VND</div>
-                <div className="btn-book">Đặt ngay</div>
+                <div style={{fontSize: 18, fontWeight: "bold", marginTop: 10, marginBottom: 30}}>Giá phòng: {hotel.price} VND</div>
+                <NavLink className="btn-book" exact to = {checkUser ? "/reservation" : "/signin"}>Đặt ngay</NavLink>
             </div>
             
         </div>

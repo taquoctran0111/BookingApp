@@ -1,0 +1,27 @@
+.reservation-container{
+    padding: 20px 30%;
+}
+.reservation-title{
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #34568B;
+    margin-bottom: 30px;
+}
+.input-reservation{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.input-reservation input{
+    width: 250px;
+    padding: 8px 10px;
+    outline: none;
+}
+.input-reservation label{
+    width: 200px;
+}
+.date-reservation{
+    float: right;
+}

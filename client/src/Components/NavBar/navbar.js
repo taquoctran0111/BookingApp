@@ -1,27 +1,32 @@
+import { useState, useEffect, useMemo } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import logo from '../../assets/image/logo.png';
 import Search from "../Search/search";
-import './navbar.css'
+import './navbar.css';
+import axios from "axios";
 
 function NavBar() {
     const navigate = useNavigate();
     const checkUser = localStorage.getItem('user-infor');
+    const checkUserJson = JSON.parse(checkUser);
+    const [userData, setUserData] = useState([]);   
+    const email = checkUserJson ? checkUserJson.email : " ";
+    useEffect(()=>{
+        axios.get('http://localhost:8797/users/' + email)
+                .then(res => {
+                    setUserData(res.data.result);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+    },[])
 
     const checkUserUI = () => {
         const logOut = () => {
             localStorage.removeItem('user-infor');
             navigate('/')
-            // console.log(checkUser.email);
         }
-        if(checkUser){
-            return(
-                <div style={{display: "flex"}}>
-                    <div>Xin chào {checkUser.email}</div>
-                    <div className="button" onClick={logOut}>Đăng xuất</div>
-                </div>
-            );
-        }
-        else{
+        if(!checkUser){
             return(
                 <div style={{display: "flex"}}>
                         <NavLink className="button-active" exact to = "/signin">
@@ -30,6 +35,14 @@ function NavBar() {
                         <NavLink className="button" exact to = "/signup">
                             Đăng ký
                         </NavLink>
+                </div>
+            );
+        }
+        else{
+            return(
+                <div style={{display: "flex", alignItems: "center"}}>
+                    <div>Xin chào {userData.username}</div>
+                    <div className="button" onClick={logOut}>Đăng xuất</div>
                 </div>
             );
         }
