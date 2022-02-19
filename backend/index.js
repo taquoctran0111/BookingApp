@@ -42,6 +42,7 @@ app.use(expressValidator())
 app.use("/hotels", require("./src/hotels/hotelControllers.js"))
 app.use("/travels", require("./src/travels/travelControllers.js"))
 app.use("/", require("./src/users/userControllers.js"));
+app.use("/reservations", require("./src/reservations/reservationControllers.js"));
 
 
 app.listen(PORT, () => {

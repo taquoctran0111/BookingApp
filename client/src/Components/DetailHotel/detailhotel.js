@@ -102,7 +102,7 @@ function DetailHotel() {
                 <div>Nhìn ra vườn</div>
                 <div>Có bãi đậu xe riêng miễn phí ở khách sạn này</div>
                 <div style={{fontSize: 18, fontWeight: "bold", marginTop: 10, marginBottom: 30}}>Giá phòng: {hotel.price} VND</div>
-                <NavLink className="btn-book" exact to = {checkUser ? "/reservation" : "/signin"}>Đặt ngay</NavLink>
+                <NavLink className="btn-book" exact to = {checkUser ? "/reservation" : "/signin"} state={{id: idHotel, price: hotel.price}}>Đặt ngay</NavLink>
             </div>
             
         </div>
