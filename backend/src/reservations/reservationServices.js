@@ -17,7 +17,19 @@ let getReservations = async () => {
         reservations: getReservations,
     };
 }
-
+let getReservationsUserId = async (user_id) => {
+  let getReservationsUserId = await Reservation.findAll({
+    where: {
+      user_id: user_id,
+    }
+  });
+  if (getReservationsUserId === null) {
+    return null
+  }
+  return {
+      reservationsUserId: getReservationsUserId,
+  };
+}
 let getReservation = async (reservationId) => {
     let getReservation = await findOneReservation(Reservation, reservationId);
     if (getReservation === null) {
@@ -87,5 +99,6 @@ module.exports = {
     getReservation,
     createReservation,
     updateReservation,
-    deleteReservation
+    deleteReservation,
+    getReservationsUserId
 }

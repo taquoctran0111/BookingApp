@@ -2,12 +2,13 @@ import React, {useState, useEffect} from "react";
 import DatePicker from "react-datepicker";
 import {NavLink, useLocation,  useNavigate} from "react-router-dom";
 import moment from "moment";
-import "./reservation.css";
 import axios from "axios";
-function Reservation() {
+function ReservationDetail() {
     let location = useLocation();
-    let idHotel = location.state.id;
-    let priceHotel = location.state.price;
+    let idReservation = location.state.reservationId;
+    let idHotel = location.state.hotelId;
+    const [hotel, setHotel] = useState([]);
+    const [price, setPrice] = useState(0);
     const [errorLog, setErrorLog] = useState("");
     const [emailUser, setEmailUser] = useState("");
     const [username, setUsername] = useState("");
@@ -39,17 +40,42 @@ function Reservation() {
                 })
     },[])
 
+    useEffect(()=>{
+        axios.get('http://localhost:8797/hotels/' + idHotel)
+                .then(res => {
+                    setHotel(res.data.result.hotel);
+                    setPrice(res.data.result.hotel.price);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+    },[])
+
+    useEffect(()=>{
+        axios.get('http://localhost:8797/reservations/' + idReservation)
+                .then(res => {
+                    const reservationData = res.data.result.reservation;
+                    setCheckIn(moment(reservationData.start_date).toDate());
+                    setCheckOut(moment(reservationData.end_date).toDate());
+                    setMan(reservationData.num_adult);
+                    setChild(reservationData.num_child);
+                    setTotalPrice(reservationData.total_price);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+    },[])
+
     const userId = userData.id;
     const checkInDay = moment(checkIn).get('date');
     const checkOutDay = moment(checkOut).get('date');
     const numStay = checkOutDay - checkInDay;
-    const totalPriceCal = priceHotel * numStay * man;
-
+    const totalPriceCal = price * numStay * man;
     const ConfirmInfo = () => {
         setTotalPrice(totalPriceCal);
     }
 
-    const CreateReservation = async () => {
+    const UpdateReservation = async () => {
         const ReservationData = JSON.stringify({ 
             user_id: userId,
             hotel_id: idHotel,
@@ -59,10 +85,10 @@ function Reservation() {
             num_stay: numStay,
             num_adult: man, 
             num_child: child,
-            total_price: totalPriceCal
+            total_price: totalPrice
         })
-        let result = await fetch("http://localhost:8797/reservations/",{
-            method: "POST",
+        let result = await fetch("http://localhost:8797/reservations/" + idReservation,{
+            method: "PUT",
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -81,6 +107,20 @@ function Reservation() {
             setErrorLog(result.message);
         }
     }
+
+    const CancelReservation = () =>{
+        axios.delete('http://localhost:8797/reservations/' + idReservation)
+                .then(res => {
+                    navigate("/reservationlist", {
+                        state: {
+                            userId: userId,
+                        }
+                    })
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+    }
     
     return(
         <div className="reservation-container">
@@ -95,10 +135,10 @@ function Reservation() {
                     <label>Tên người dùng</label>
                     <input type="text" value={username} disabled/>
                 </div>
-                <div class = "input-reservation">
+                {/* <div class = "input-reservation">
                     <label>Giá phòng(1 người/1 đêm)(VND)</label>
                     <input type="text" value={numberWithCommas(priceHotel)} disabled/>
-                </div>
+                </div> */}
                 <div class = "input-reservation">
                     <label>Ngày nhận phòng</label>
                     <DatePicker
@@ -128,20 +168,22 @@ function Reservation() {
                 </div>
                 <div class = "input-reservation">
                     <label>Nhập số người lớn</label>
-                    <input className = "quantity-reservation" type="text" name="quatity-man" onChange={e => setMan(e.target.value)} placeholder="Người lớn"/>
+                    <input className = "quantity-reservation" type="text" name="quatity-man" onChange={e => setMan(e.target.value)} placeholder="Người lớn" value={man}/>
                 </div>
                 <div class = "input-reservation">
                     <label>Nhập số trẻ con</label>
-                    <input className = "quantity-reservation" type="text" name="quatity-child" onChange={e => setChild(e.target.value)} placeholder="Trẻ em"/>
+                    <input className = "quantity-reservation" type="text" name="quatity-child" onChange={e => setChild(e.target.value)} placeholder="Trẻ em" value={child}/>
                 </div>
                 <div class = "input-reservation">
                     <label>Tổng tiền phải thanh toán: </label>
                     <div style={{fontSize: 25, color: "#34568B"}}>{numberWithCommas(totalPrice)} VND</div>
                 </div>
                 <input type="button" value="Xác nhận thông tin" className="btn-book" onClick={ConfirmInfo}/>
-                <input type="button" value="Thanh toán" className="btn-book" onClick={CreateReservation}/>
+                <input type="button" value="Cập nhật thông tin" className="btn-book" onClick={UpdateReservation}/>
+                <input type="button" value="Hủy phòng" className="btn-book" onClick={CancelReservation}/>
             </form>
         </div>
     );
 }
-export default Reservation;
+
+export default ReservationDetail;

@@ -1,7 +1,7 @@
 let express = require("express");
 let router = new express.Router();
 
-let {getReservation, getReservations, createReservation, updateReservation, deleteReservation} = require("./reservationServices");
+let {getReservation, getReservations, createReservation, updateReservation, deleteReservation, getReservationsUserId} = require("./reservationServices");
 
 router.get("/", async (req, res, next) => {
     try {
@@ -16,6 +16,7 @@ router.get("/", async (req, res, next) => {
     }
 });
 
+
 router.get("/:reservationId", async (req, res, next) => {
     try {
       let {reservationId} = req.params;
@@ -27,6 +28,18 @@ router.get("/:reservationId", async (req, res, next) => {
     } catch (error) {
       return res.status(500).send({error: "Server Error"});
     }
+});
+router.get("/users/:userId", async (req, res, next) => {
+  try {
+    let {userId} = req.params;
+    let result = await getReservationsUserId(userId);
+    if (result === null) {
+      return res.status(404).send({message: "Not found reservations"});
+    }
+    return res.send({result});
+  } catch (error) {
+    return res.status(500).send({error: "Server Error"});
+  }
 });
 
 router.post("/", async (req, res, next) => {

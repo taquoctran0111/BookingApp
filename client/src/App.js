@@ -9,6 +9,7 @@ import ListHotel from './Components/ListHotel/listhotel';
 import DetailHotel from './Components/DetailHotel/detailhotel';
 import Reservation from './Components/Reservation/reservation';
 import ReservationList from './Components/ReservationList/reservationlist';
+import ReservationDetail from './Components/ReservationDetail/reservationdetail';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="detailhotel" element={<DetailHotel />} />
             <Route path="reservation" element={<Reservation />} />
             <Route path="reservationlist" element={<ReservationList />} />
+            <Route path="reservationdetail" element={<ReservationDetail />} />
           </Route>
         </Routes>
       </div>
