@@ -100,7 +100,7 @@ function Home() {
                         <img src = {DiscoveryImg} alt="" className="sale-logo" />
                         <label className="title">Khám phá Việt Nam</label>   
                     </div>
-                    <Carousel show={6.5} slide={3} transition={0.5} className="carousel" swiping={true}>
+                    <Carousel show={5.5} slide={3} transition={0.5} className="carousel" swiping={true}>
                         <div className="slider">
                             <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
                                 <img src={LocaImage} alt="" className="slider-img"/>
@@ -180,7 +180,7 @@ function Home() {
                         <img src = {DiscoveryImg} alt="" className="sale-logo" />
                         <label className="title">Các địa điểm được yêu thích</label>   
                     </div>
-                    <Carousel show={6.5} slide={3} transition={0.5} className="carousel" swiping={true}>
+                    <Carousel show={5.5} slide={3} transition={0.5} className="carousel" swiping={true}>
                         <div className="slider">
                             <NavLink exact to = "/listhotel" style={{textDecoration: "none"}}>
                                 <img src={LocaImage} alt="" className="slider-img"/>
